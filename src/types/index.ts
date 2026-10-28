@@ -200,6 +200,8 @@ export interface Invoice {
   // Requirement #3: Update / Regenerate Invoice tracking
   regeneratedCount?: number;
   lastRegeneratedAt?: string;
+  // Per-Bill Custom Format Override (when user chooses "Save for This Bill Only")
+  customBillConfig?: Partial<BillPrintConfig>;
 }
 
 export interface PurchaseBillItem {
@@ -408,29 +410,99 @@ export interface MainAdminConfig {
 
 export type BillPaperSize = 'A4' | 'A5' | 'Letter' | 'Thermal_80mm' | 'Thermal_58mm' | '80mm' | '58mm';
 export type BillPaperOrientation = 'portrait' | 'landscape';
+export type BillThemeColor = 'emerald' | 'monochrome' | 'saffron' | 'indigo';
+export type BillFontScale = 'compact' | 'normal' | 'large';
+
+export interface CustomBillField {
+  id: string;
+  label: string;
+  value: string;
+  position: 'header' | 'customer' | 'footer';
+  visible: boolean;
+}
+
+export interface BillColumnLabels {
+  serialNo?: string;
+  product?: string;
+  batch?: string;
+  expiry?: string;
+  mrp?: string;
+  rate?: string;
+  discount?: string;
+  qty?: string;
+  sp?: string;
+  gst?: string;
+  lineTotal?: string;
+  billedToTitle?: string;
+  paymentDetailsTitle?: string;
+  termsTitle?: string;
+  signatoryLabel?: string;
+  customerSignLabel?: string;
+}
 
 export interface BillPrintConfig {
   paperSize: BillPaperSize;
   orientation: BillPaperOrientation;
+  themeColor?: BillThemeColor;
+  fontSizeScale?: BillFontScale;
   invoiceTitle: string;
+  customCompanyNameOverride?: string;
   customHeaderMatter: string;
   customSubHeaderMatter: string;
+  customAddressOverride?: string;
+  customPhoneOverride?: string;
+  customCustomerNote?: string;
   customFooterMatter: string;
   termsAndConditions: string[];
+  // Header & Statutory License Toggles
   showCompanyLogo: boolean;
+  showShortNameBadge?: boolean;
+  showAddress?: boolean;
+  showOwnerNames?: boolean;
+  showPhoneAndEmail?: boolean;
   showGstinAndLicenses?: boolean;
+  showGstin?: boolean;
+  showPanNumber?: boolean;
+  showFranchiseCode?: boolean;
+  showFssaiAndDl?: boolean;
+  showSessionYear?: boolean;
+  // Customer & AWPL Block Toggles
+  showCustomerSection?: boolean;
+  showCustomerAwplId?: boolean;
+  showGreenIdBadge?: boolean;
+  showPaymentAndStaffBlock?: boolean;
+  // Item Table Column Toggles
+  showSerialNoColumn?: boolean;
+  showSkuInItem?: boolean;
+  showOnlineStatusInItem?: boolean;
+  showItemAwplId?: boolean;
+  showPendingTagInItem?: boolean;
   showBatchColumn?: boolean;
+  showExpiryColumn?: boolean;
   showMrpColumn?: boolean;
+  showDiscountColumn?: boolean;
+  showRateColumn?: boolean;
+  showQtyColumn?: boolean;
   showSpColumn: boolean;
   showSpPoints?: boolean;
   showGstColumn: boolean;
   showGstBreakdown?: boolean;
+  showLineTotalColumn?: boolean;
+  // Totals, Payment, QR & Footer Toggles
   showCfClearanceBlock: boolean;
+  showSubtotalAndDiscount?: boolean;
+  showBalanceDue?: boolean;
   showUpiQr: boolean;
   showBankAndQr?: boolean;
   showCustomerAppQr: boolean;
+  showTermsAndConditions?: boolean;
   showSignaturesAndStamp: boolean;
   showSignatureAndSeal?: boolean;
+  showOfficialSealStamp?: boolean;
+  // Custom Column Headings & User-Defined Fields
+  columnLabels?: BillColumnLabels;
+  customFields?: CustomBillField[];
+  // PC Printer
   selectedPrinterName?: string;
   detectedPrinters?: string[];
   autoPrinterDetect?: boolean;
