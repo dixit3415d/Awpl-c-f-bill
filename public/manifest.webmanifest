@@ -1,0 +1,39 @@
+{
+  "id": "/",
+  "name": "C&F Bill — Official AWPL Franchise & C&F Cloud ERP",
+  "short_name": "C&F Bill",
+  "description": "Official Asclepius Wellness Private Limited (AWPL) C&F Billing, Inventory, Customer App, and Main Admin Cloud ERP for D RIGHT WELLNESS.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#022c22",
+  "theme_color": "#f97316",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
+

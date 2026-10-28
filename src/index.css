@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  /* Remap emerald & teal palettes to AWPL Official Orange & Warm Amber shades so every module, badge, and modal in the app shares a unified White & Orange combination */
+  --color-emerald-50: #fff7ed;
+  --color-emerald-100: #ffedd5;
+  --color-emerald-200: #fed7aa;
+  --color-emerald-300: #fdba74;
+  --color-emerald-400: #fb923c;
+  --color-emerald-500: #f97316;
+  --color-emerald-600: #ea580c;
+  --color-emerald-700: #ea580c;
+  --color-emerald-800: #c2410c;
+  --color-emerald-900: #9a3412;
+  --color-emerald-950: #7c2d12;
+
+  --color-teal-50: #fff7ed;
+  --color-teal-100: #ffedd5;
+  --color-teal-200: #fed7aa;
+  --color-teal-300: #fdba74;
+  --color-teal-400: #fb923c;
+  --color-teal-500: #f97316;
+  --color-teal-600: #ea580c;
+  --color-teal-700: #c2410c;
+  --color-teal-800: #9a3412;
+  --color-teal-900: #7c2d12;
+  --color-teal-950: #431407;
+}
+
+body {
+  background-color: #fffaf5;
+  color: #0f172a;
+}
